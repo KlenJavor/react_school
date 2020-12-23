@@ -15,4 +15,4 @@ internal/modules/cjs/loader.js:883
 
 Error: Cannot find module 'C:\Users\Acer\Desktop\projects\react\my-app\node_modules\eslint\bin\eslint.js'
 
-PS as admin
+PS as admingit add .
