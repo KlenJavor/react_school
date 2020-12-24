@@ -13,27 +13,26 @@ const ListItem = ({ singleMedia }) => {
   const [modalVisible, setModalVisible] = useState(true);
 
   return (
-    <View>
-      <View style={styles.gridItem}>
-      <View style={styles.centeredView}>
-        <TouchableOpacity style={{ flex: 1, flexDirection: 'row' }}>
-          <Image
-            style={{ flex: 1,   }}
-            source={{ uri: singleMedia.thumbnails.w160 }}
-          />
-          <View style={{ flex: 1, marginHorizontal: 20 }}>
-            <Text style={styles.titleText}>{singleMedia.title}</Text>
-            <Text>{singleMedia.description}</Text>
-          </View>
-        </TouchableOpacity>
+    <View style={styles.gridItem}>
+      <TouchableOpacity style={{ flex: 1, flexDirection: "row" }}>
+        <Image
+          style={{ flex: 1 }}
+          source={{ uri: singleMedia.thumbnails.w160 }}
+        />
+        <View style={{ flex: 1, marginHorizontal: 20 }}>
+          <Text style={styles.titleText}>{singleMedia.title}</Text>
+          <Text>{singleMedia.description}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   gridItem: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#D3D3D3",
     marginVertical: 2,
     padding: 8,
@@ -42,11 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: "20px",
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-      },
 });
 
 ListItem.propTypes = {
