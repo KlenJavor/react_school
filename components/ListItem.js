@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Modal,
   Text,
   View,
   TouchableOpacity,
@@ -10,8 +9,6 @@ import {
 import PropTypes from "prop-types";
 
 const ListItem = ({ singleMedia }) => {
-  const [modalVisible, setModalVisible] = useState(true);
-
   return (
     <View style={styles.gridItem}>
       <TouchableOpacity style={{ flex: 1, flexDirection: "row" }}>
