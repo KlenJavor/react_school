@@ -15,7 +15,6 @@ const List = () => {
         const json = await response.json();
         console.log(json);
         setMediaArray(json);
-        console.log(json);
       };
       loadMedia();
     } catch (error) {
@@ -25,6 +24,7 @@ const List = () => {
   return (
     <FlatList
       data={mediaArray}
+      keyExtractor={(item, index) => item.filename}
       renderItem={({ item }) => <ListItem singleMedia={item} />}
     />
   );
