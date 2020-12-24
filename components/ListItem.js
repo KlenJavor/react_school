@@ -14,18 +14,19 @@ const ListItem = ({ singleMedia }) => {
 
   return (
     <View>
-
       <View style={styles.gridItem}>
-        <TouchableOpacity>
+      <View style={styles.centeredView}>
+        <TouchableOpacity style={{ flex: 1, flexDirection: 'row' }}>
           <Image
-            style={{ flex: 1, width: 100, height: 100 }}
+            style={{ flex: 1,   }}
             source={{ uri: singleMedia.thumbnails.w160 }}
           />
-          <View style={{ flex: 2, marginHorizontal: 20 }}>
+          <View style={{ flex: 1, marginHorizontal: 20 }}>
             <Text style={styles.titleText}>{singleMedia.title}</Text>
             <Text>{singleMedia.description}</Text>
           </View>
         </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -35,35 +36,17 @@ const styles = StyleSheet.create({
   gridItem: {
     backgroundColor: "#D3D3D3",
     marginVertical: 2,
+    padding: 8,
   },
   titleText: {
     fontWeight: "bold",
+    fontSize: "20px",
   },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
+      },
 });
 
 ListItem.propTypes = {
