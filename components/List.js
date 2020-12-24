@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
+import ListItem from "./ListItem";
 
 const mediaArray = [
   {
@@ -59,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default List;
