@@ -9,7 +9,7 @@ const List = () => {
   const [mediaArray, setMediaArray] = useState([]);
 
   useEffect(() => {
-    {
+    try {
       const loadMedia = async () => {
         const response = await fetch(url);
         const json = await response.json();
@@ -18,6 +18,8 @@ const List = () => {
         console.log(json);
       };
       loadMedia();
+    } catch (error) {
+      throw error;
     }
   }, []);
   return (
