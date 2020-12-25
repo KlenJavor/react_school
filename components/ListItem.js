@@ -5,18 +5,25 @@ import {
   View,
   TouchableOpacity,
   Image,
+  Dimensions,
 } from "react-native";
 import PropTypes from "prop-types";
+
+const url = "http://media.mw.metropolia.fi/wbma/uploads/";
 
 const ListItem = ({ singleMedia }) => {
   return (
     <View style={styles.gridItem}>
       <TouchableOpacity style={{ flex: 1, flexDirection: "row" }}>
-        <Image
-          style={{ flex: 1 }}
-          source={{ uri: singleMedia.thumbnails.w160 }}
-        />
-        <View style={{ flex: 1, marginHorizontal: 20 }}>
+        <View style={styles.imageBox}>
+          <Image
+
+            source={{ uri: url + singleMedia.filename }}
+          />
+        </View>
+        <View
+          style={{ flex: 1, marginHorizontal: 20, alignItems: "flex-start" }}
+        >
           <Text style={styles.titleText}>{singleMedia.title}</Text>
           <Text>{singleMedia.description}</Text>
         </View>
@@ -37,6 +44,15 @@ const styles = StyleSheet.create({
   titleText: {
     fontWeight: "bold",
     fontSize: "20px",
+  },
+  imageBox: {
+    width: Dimensions.get("window").width * 0.3,
+    height: Dimensions.get("window").width * 0.3,
+
+    overflow: "hidden",
+    flex: 1,
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
   },
 });
 
