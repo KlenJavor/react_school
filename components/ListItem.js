@@ -17,7 +17,7 @@ const ListItem = ({ singleMedia }) => {
       <TouchableOpacity style={{ flex: 1, flexDirection: "row" }}>
         <View style={styles.imageBox}>
           <Image
-
+            style={styles.image}
             source={{ uri: url + singleMedia.filename }}
           />
         </View>
@@ -35,8 +35,7 @@ const ListItem = ({ singleMedia }) => {
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+
     backgroundColor: "#D3D3D3",
     marginVertical: 2,
     padding: 8,
@@ -51,8 +50,12 @@ const styles = StyleSheet.create({
 
     overflow: "hidden",
     flex: 1,
-              alignItems: "flex-start",
-              justifyContent: "flex-start",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });
 
