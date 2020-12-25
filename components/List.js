@@ -13,14 +13,13 @@ const List = () => {
 
     const result = await Promise.all(
       json.map(async (item) => {
-        console.log("perkele", item);
+        console.log(item);
         const response = await fetch(url + item.file_id);
         const json = await response.json();
         return json;
       })
     );
     setMediaArray(result);
-
     console.log("RESULT", result);
   };
 

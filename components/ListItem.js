@@ -35,7 +35,6 @@ const ListItem = ({ singleMedia }) => {
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-
     backgroundColor: "#D3D3D3",
     marginVertical: 2,
     padding: 8,
@@ -47,7 +46,6 @@ const styles = StyleSheet.create({
   imageBox: {
     width: Dimensions.get("window").width * 0.3,
     height: Dimensions.get("window").width * 0.3,
-
     overflow: "hidden",
     flex: 1,
     alignItems: "flex-start",
