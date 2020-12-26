@@ -1,7 +1,5 @@
-
 import { useState, useEffect } from "react";
 const url = "http://media.mw.metropolia.fi/wbma/media/";
-
 
 const useLoadMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);

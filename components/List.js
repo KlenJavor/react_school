@@ -1,62 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FlatList } from "react-native";
 import ListItem from "./ListItem";
-import {useLoadMedia} from '../hooks/APIhooks';
+import { useLoadMedia } from "../hooks/APIhooks";
 
-
-
-const List = ({navigation}) => {
-
+const List = ({ navigation }) => {
   const mediaArray = useLoadMedia();
 
   return (
-
-        <FlatList
-          data={mediaArray}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) =>
-            <ListItem singleMedia={item} navigation={navigation}/>
-          }
-        />
-
-  );
-};
-
-/* const url = "http://media.mw.metropolia.fi/wbma/media/";
-const List = () => {
-  const [mediaArray, setMediaArray] = useState([]);
-
-  const loadMedia = async () => {
-    const response = await fetch(url);
-    const json = await response.json();
-    console.log(json);
-
-    const result = await Promise.all(
-      json.map(async (item) => {
-        console.log(item);
-        const response = await fetch(url + item.file_id);
-        const json = await response.json();
-        return json;
-      })
-    );
-    setMediaArray(result);
-    console.log("RESULT", result);
-  };
-
-  useEffect(() => {
-    try {
-      loadMedia();
-    } catch (error) {
-      throw error;
-    }
-  }, []);
-  return (
     <FlatList
       data={mediaArray}
-      keyExtractor={(item, index) => item.filename}
-      renderItem={({ item }) => <ListItem singleMedia={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item }) => (
+        <ListItem singleMedia={item} navigation={navigation} />
+      )}
     />
   );
 };
-*/
+
 export default List;
