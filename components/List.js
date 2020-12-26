@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { FlatList } from "react-native";
 import ListItem from "./ListItem";
+import {useLoadMedia} from '../hooks/APIhooks';
 
-const url = "http://media.mw.metropolia.fi/wbma/media/";
+
+
+const List = ({navigation}) => {
+
+  const mediaArray = useLoadMedia();
+
+  return (
+
+        <FlatList
+          data={mediaArray}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) =>
+            <ListItem singleMedia={item} navigation={navigation}/>
+          }
+        />
+
+  );
+};
+
+/* const url = "http://media.mw.metropolia.fi/wbma/media/";
 const List = () => {
   const [mediaArray, setMediaArray] = useState([]);
 
@@ -38,5 +58,5 @@ const List = () => {
     />
   );
 };
-
+*/
 export default List;
