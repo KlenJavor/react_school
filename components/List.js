@@ -1,20 +1,27 @@
-import React from "react";
-import { FlatList } from "react-native";
-import ListItem from "./ListItem";
-import { useLoadMedia } from "../hooks/APIhooks";
+import React from 'react';
+import {FlatList} from 'react-native';
+import ListItem from './ListItem';
+import {useLoadMedia} from '../hooks/APIhooks';
+import PropTypes from 'prop-types';
 
-const List = ({ navigation }) => {
+
+const List = (props) => {
   const mediaArray = useLoadMedia();
 
   return (
     <FlatList
       data={mediaArray}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item }) => (
-        <ListItem singleMedia={item} navigation={navigation} />
-      )}
+      renderItem={({item}) => <ListItem
+        navigation={props.navigation}
+        singleMedia={item}
+      />}
     />
   );
+};
+
+List.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default List;

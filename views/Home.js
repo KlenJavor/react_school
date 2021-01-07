@@ -1,12 +1,13 @@
-import {StatusBar} from 'expo-status-bar';
 import React from 'react';
+import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, SafeAreaView} from 'react-native';
 import List from '../components/List';
+import PropTypes from 'prop-types';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <List />
+      <List navigation={navigation}></List>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -20,5 +21,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+Home.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default Home;

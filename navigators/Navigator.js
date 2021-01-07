@@ -2,12 +2,11 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeScreen from '../views/Home';
-import ProfileScreen from '../views/Profile';
+import Home from '../views/Home';
 import Single from '../views/Single';
+import Profile from '../views/Profile';
 
 const Tab = createBottomTabNavigator();
-
 const Stack = createStackNavigator();
 
 const TabScreen = () => {
@@ -15,13 +14,11 @@ const TabScreen = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}>
-
+        component={Home}>
       </Tab.Screen>
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}>
-
+        component={Profile}>
       </Tab.Screen>
     </Tab.Navigator>
   );
@@ -30,11 +27,6 @@ const TabScreen = () => {
 const StackScreen = () => {
   return (
     <Stack.Navigator>
-      {/*
-      TODO: make two stack screens:
-      // 1st: name=Home, component=TabScreen
-      // 2nd: name=Single, component=Single
-       */}
       <Stack.Screen name="Home" component={TabScreen} />
       <Stack.Screen name="Single" component={Single} />
     </Stack.Navigator>
