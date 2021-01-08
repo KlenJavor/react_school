@@ -16,17 +16,12 @@ const ListItem = ({singleMedia, navigation}) => {
     <View style={styles.gridItem}>
       <TouchableOpacity onPress={
         () => {
-          navigation.navigate('Single');
+          navigation.navigate('Single', {singleMedia});
         }} style={{flex: 1, flexDirection: 'row'}}>
         <View style={styles.imageBox}>
           <Image
             style={styles.image}
             source={{uri: url + singleMedia.filename}}
-            onPress={
-              () => {
-                navigation.navigate('Single');
-              }
-            }
           />
         </View>
         <View
