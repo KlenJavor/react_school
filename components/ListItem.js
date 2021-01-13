@@ -38,13 +38,17 @@ const ListItem = ({singleMedia, navigation}) => {
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: 'lightgray',
     marginVertical: 2,
     padding: 8,
+    borderColor: 'black',
+    borderWidth: 0.5,
+    elevation: 5,
   },
   titleText: {
     fontWeight: 'bold',
     fontSize: 20,
+    color: 'chocolate',
   },
   imageBox: {
     width: Dimensions.get('window').width * 0.3,
@@ -57,6 +61,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+    borderRadius: 60,
   },
 });
 
