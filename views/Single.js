@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: 20,
   },
   imageBox: {
     width: Dimensions.get('window').width * 0.3,
