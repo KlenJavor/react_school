@@ -28,7 +28,7 @@ const ListItem = ({singleMedia, navigation}) => {
         </View>
         <View style={{flex: 1, marginHorizontal: 20, alignItems: 'flex-start'}}>
           <Text style={styles.titleText}>{singleMedia.title}</Text>
-          <Text>{singleMedia.description}</Text>
+          <Text style={styles.text}>{singleMedia.description}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: 'chocolate',
+    fontFamily: 'San Francisco',
+  },
+  text: {
+    fontFamily: 'San Francisco',
   },
   imageBox: {
     width: Dimensions.get('window').width * 0.3,
