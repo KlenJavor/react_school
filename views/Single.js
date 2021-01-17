@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   imageBox: {
-    width: Dimensions.get('window').width * 0.3,
-    height: Dimensions.get('window').width * 0.3,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height * 2,
     overflow: 'hidden',
     flex: 1,
     alignItems: 'flex-start',

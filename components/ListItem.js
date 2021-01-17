@@ -23,7 +23,7 @@ const ListItem = ({singleMedia, navigation}) => {
         <View style={styles.imageBox}>
           <Image
             style={styles.image}
-            source={{uri: url + singleMedia.filename}}
+            source={{uri: url + singleMedia.thumbnails.w160}}
           />
         </View>
         <View style={{flex: 1, marginHorizontal: 20, alignItems: 'flex-start'}}>
