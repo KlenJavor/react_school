@@ -24,14 +24,22 @@ const TabScreen = () => {
 const StackScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={TabScreen}
-        options={({route}) => ({
-          headerTitle: getFocusedRouteNameFromRoute(route),
-        })}
-      />
-      <Stack.Screen name="Single" component={Single} />
+      {isLoggedIn ? (
+        <>
+          <Stack.Screen
+            name="Home"
+            component={TabScreen}
+            options={({route}) => ({
+              headerTitle: getFocusedRouteNameFromRoute(route),
+            })}
+          />
+          <Stack.Screen name="Single" component={Single} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="Login" component={Login} />
+        </>
+      )}
     </Stack.Navigator>
   );
 };
