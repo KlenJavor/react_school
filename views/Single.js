@@ -8,19 +8,18 @@ import {
   Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
-const url = 'http://media.mw.metropolia.fi/wbma/uploads/';
+import {uploadsUrl} from '../utils/variables';
 import {StatusBar} from 'expo-status-bar';
 
 const Single = ({route}) => {
   const {singleMedia} = route.params;
-
-  console.log('route filename', singleMedia.filename);
+  // console.log('route filename', singleMedia.filename);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageBox}>
         <Image
           style={styles.image}
-          source={{uri: url + singleMedia.filename}}
+          source={{uri: uploadsUrl + singleMedia.filename}}
         />
       </View>
       <View style={{flex: 1, marginHorizontal: 20, alignItems: 'flex-start'}}>
@@ -55,6 +54,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+    resizeMode="contain"
   },
 });
 

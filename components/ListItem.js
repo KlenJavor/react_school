@@ -8,8 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
-const url = 'http://media.mw.metropolia.fi/wbma/uploads/';
+import {uploadsUrl} from '../utils/variables';
 
 const ListItem = ({singleMedia, navigation}) => {
   return (
@@ -18,15 +17,15 @@ const ListItem = ({singleMedia, navigation}) => {
         onPress={() => {
           navigation.navigate('Single', {singleMedia});
         }}
-        style={{flex: 1, flexDirection: 'row'}}
+        style={styles.row}
       >
         <View style={styles.imageBox}>
           <Image
             style={styles.image}
-            source={{uri: url + singleMedia.thumbnails.w160}}
+            source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}
           />
         </View>
-        <View style={{flex: 1, marginHorizontal: 20, alignItems: 'flex-start'}}>
+        <View style={styles.textBox}>
           <Text style={styles.titleText}>{singleMedia.title}</Text>
           <Text style={styles.text}>{singleMedia.description}</Text>
         </View>
@@ -67,6 +66,8 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 60,
   },
+  row: {flex: 1, flexDirection: 'row'},
+  textBox: {flex: 1, marginHorizontal: 20, alignItems: 'flex-start'},
 });
 
 ListItem.propTypes = {
