@@ -1,23 +1,28 @@
 import React, {useContext} from 'react';
-import {StyleSheet, SafeAreaView, Text, Button} from 'react-native';
-import {MainContext} from '../contexts/MainContext';
+import {StatusBar} from 'expo-status-bar';
 import PropTypes from 'prop-types';
+import {StyleSheet, View, Button, Text, SafeAreaView} from 'react-native';
+import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Profile = ({navigation}) => {
-  const [isLoggedIn, setIsLoggedIn] = useContext(MainContext);
-  console.log('profile', isLoggedIn);
+const Profile = (props) => {
+  const [state, setState] = useContext(MainContext);
+
+  // console.log('username', formValues.fullname)
   const logout = async () => {
-    setIsLoggedIn(false);
     await AsyncStorage.clear();
-    if (!isLoggedIn) {
-      // this is to make sure isLoggedIn has changed, will be removed later
-      navigation.navigate('Login');
+
+    setState((state) => ({...state, isLoggedIn: false}));
+    if (!state.isLoggedIn) {
+      props.navigation.navigate('Login');
     }
   };
   return (
     <SafeAreaView style={styles.container}>
       <Text>Profile</Text>
+      <Text>{state.user.username}</Text>
+      <Text>{state.user.full_name}</Text>
+      <Text>{state.user.email}</Text>
       <Button title={'Logout'} onPress={logout} />
     </SafeAreaView>
   );

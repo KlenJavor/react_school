@@ -1,37 +1,20 @@
 import React, {useContext, useEffect} from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {StyleSheet, View, Text, Button, Alert} from 'react-native';
+
 import PropTypes from 'prop-types';
 import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FormTextInput from '../components/FormTextInput';
 
-const Login = ({navigation}) => {
-  const [isLoggedIn, setIsLoggedIn] = useContext(MainContext);
-  console.log('ili', isLoggedIn);
-  const logIn = async () => {
-    setIsLoggedIn(true);
-    await AsyncStorage.setItem('userToken', 'abc');
-    if (isLoggedIn) {
-      // this is to make sure isLoggedIn has changed, will be removed later
-      navigation.navigate('Home');
-    }
-  };
+import RegisterForm from '../components/RegisterForm';
+import LoginForm from '../components/LoginForm';
 
-  const getToken = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
-    console.log('token', userToken);
-    if (userToken === 'abc') {
-      setIsLoggedIn(true);
-      navigation.navigate('Home');
-    }
-  };
-  useEffect(() => {
-    getToken();
-  }, []);
-
+const Authentication = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text>Login</Text>
-      <Button title="Sign in!" onPress={logIn} />
+      <LoginForm navigation={navigation} />
+      <RegisterForm navigation={navigation} />
     </View>
   );
 };
@@ -45,8 +28,8 @@ const styles = StyleSheet.create({
   },
 });
 
-Login.propTypes = {
+Authentication.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default Login;
+export default Authentication;

@@ -1,37 +1,64 @@
-import {useState, useEffect} from 'react';
-import {mediaUrl} from '../utils/variables';
+const apiUrl = 'http://media.mw.metropolia.fi/wbma/';
 
-const useLoadMedia = () => {
-  const [mediaArray, setMediaArray] = useState([]);
-
-  const loadMedia = async () => {
-    try {
-      const response = await fetch(mediaUrl);
-      const json = await response.json();
-      //  console.log(json);
-
-      const result = await Promise.all(
-        json.map(async (item) => {
-          //y     console.log(item);
-          const response = await fetch(mediaUrl + item.file_id);
-          const json = await response.json();
-          return json;
-        })
-      );
-      setMediaArray(result);
-    } catch (error) {
-      console.error('loadMedia error', error);
-    }
+const postLogIn = async (userCreds) => {
+  const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(userCreds),
   };
-  useEffect(() => {
-    try {
-      loadMedia();
-    } catch (error) {
-      throw error;
-    }
-  }, []);
 
-  return mediaArray;
+  try {
+    const response = await fetch(apiUrl + 'login', options);
+    const userData = await response.json();
+    if (response.ok) {
+      return userData;
+    } else {
+      throw new Error(userData.message);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
 };
 
-export {useLoadMedia};
+const postSignUp = async (newUser) => {
+  const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(newUser),
+  };
+  let response;
+  try {
+    response = await fetch(apiUrl + 'users', options);
+
+    response = await fetch(apiUrl + 'login', options);
+    const userData = await response.json();
+    if (response.ok) {
+      return userData;
+    } else {
+      throw new Error(userData.message);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+const checkToken = async (token) => {
+  const options = {
+    method: 'GET',
+    headers: {'x-access-token': token},
+  };
+
+  try {
+    const response = await fetch(apiUrl + 'users/user', options);
+    const userData = await response.json();
+    if (response.ok) {
+      return userData;
+    } else {
+      throw new Error(userData.message);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export {postLogIn, postSignUp, checkToken};

@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 const MainContext = React.createContext({});
 
 const MainProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [state, setState] = useState({
+    isLoggedIn: false,
+  });
 
   return (
-    <MainContext.Provider value={[isLoggedIn, setIsLoggedIn]}>
+    <MainContext.Provider value={[state, setState]}>
       {props.children}
     </MainContext.Provider>
   );
 };
 
-MainProvider.propTypes = {
+MainContext.propTypes = {
   children: PropTypes.node,
 };
 
