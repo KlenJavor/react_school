@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {mediaUrl} from '../utils/variables';
+import {baseUrl, mediaUrl} from '../utils/variables';
 
 const useLoadMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);
@@ -34,4 +34,45 @@ const useLoadMedia = () => {
   return mediaArray;
 };
 
-export {useLoadMedia};
+const useLogin = () => {
+  const postLogin = async (userCredentials) => {
+    const options = {
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify(userCredentials),
+    };
+    try {
+      const response = await fetch(baseUrl + 'login', options);
+      const userData = await response.json();
+      console.log(userData);
+      if (response.ok) {
+        return userData;
+      } else {
+        throw new Error(userData.message);
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+  const checkToken = async (token) => {
+    try {
+      const options = {
+        method: 'GET',
+        headers: {'x-access-token': token},
+      };
+      const response = await fetch(baseUrl + 'users/user', options);
+      const userData = response.json();
+      if (response.ok) {
+        return userData;
+      } else {
+        throw new Error(userData.message);
+      }
+    } catch (error) {
+      throw new Error(error.mesage);
+    }
+  };
+  return {postLogin, checkToken};
+};
+
+export {useLoadMedia, useLogin};
