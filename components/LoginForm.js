@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, Button} from 'react-native';
 import PropTypes from 'prop-types';
 import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,6 +9,19 @@ import useLoginForm from '../hooks/LoginHooks';
 
 const LoginForm = ({navigation}) => {
   const {inputs, handleInputChange} = useLoginForm();
+  const {postLogin} = useLogin();
+  const {setIsLoggedIn} = useContext(MainContext);
+
+  const doLogin = async () => {
+    try {
+      const userData = await postLogin(inputs);
+      await AsyncStorage.setItem('userToken', userData.token);
+    } catch (error) {
+      console.error('postLogin error', error);
+      //TODO: notify use on what went wrong
+    }
+  };
+
   return (
     <View>
       <Text>Login</Text>
@@ -24,7 +37,7 @@ const LoginForm = ({navigation}) => {
         secureTextEntry={true}
       />
 
-      {/*<Button title="Register!" onPress={doRegister} />*/}
+      <Button title="Login!" onPress={doLogin} />
     </View>
   );
 };
