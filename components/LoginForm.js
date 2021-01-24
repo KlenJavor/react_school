@@ -15,6 +15,7 @@ const LoginForm = ({navigation}) => {
   const doLogin = async () => {
     try {
       const userData = await postLogin(inputs);
+      setIsLoggedIn(true);
       await AsyncStorage.setItem('userToken', userData.token);
     } catch (error) {
       console.error('postLogin error', error);
