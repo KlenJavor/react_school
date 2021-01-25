@@ -10,23 +10,23 @@ import {
 import PropTypes from 'prop-types';
 import {uploadsUrl} from '../utils/variables';
 
-const ListItem = ({singleMedia, navigation}) => {
+const FirstListItem = (/*{singleMedia, navigation}*/) => {
   return (
     <View style={styles.gridItem}>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Single', {singleMedia});
-        }}
+        /*onPress={() => {
+          navigation.navigate('Upload', {singleMedia});  //navigate here to upload page
+        }}*/
         style={styles.row}
       >
         <View style={styles.imageBox}>
           <Image
             style={styles.image}
-            source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}
+            /*source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}*/
           />
         </View>
         <View style={styles.textBox}>
-          <Text style={styles.titleText}>{singleMedia.title}</Text>
+          <Text style={styles.titleText}>Upload</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     color: 'chocolate',
   },
 
@@ -73,4 +73,4 @@ ListItem.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default ListItem;
+export default FirstListItem;
