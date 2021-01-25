@@ -19,7 +19,7 @@ const Home = ({navigation}) => {
       <StatusBar style={styles.statbar} />
       <View>
         <ImageBackground
-          source={require('../img/img2.png')}
+          source={require('../img/img4.png')}
           style={styles.bgImage}
           imageStyle={{borderBottomRightRadius: 55}}
         />

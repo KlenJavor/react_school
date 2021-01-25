@@ -1,8 +1,16 @@
 import React, {useContext} from 'react';
-import {StyleSheet, SafeAreaView, Text, Button} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  Image,
+  View,
+  Dimensions,
+} from 'react-native';
 import {MainContext} from '../contexts/MainContext';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Card, ListItem, Button, Icon} from 'react-native-elements';
 
 const Profile = ({navigation}) => {
   const {isLoggedIn, setIsLoggedIn, user} = useContext(MainContext);
@@ -17,23 +25,34 @@ const Profile = ({navigation}) => {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Profile</Text>
-      <Text>Name: {user.username}</Text>
-      <Text>E-mail: {user.email}</Text>
-
-      <Button title={'Logout'} onPress={logout} />
-    </SafeAreaView>
+    <Card>
+      <Card.Divider />
+      <Card.Image
+        style={styles.imageBox}
+        source={require('../img/img4.png')}
+      ></Card.Image>
+      <Card.Title>Name: {user.username}</Card.Title>
+      <Card.Title>E-mail: {user.email}</Card.Title>
+      <Button
+        icon={<Icon name="code" color="#ffffff" />}
+        buttonStyle={{
+          borderRadius: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginBottom: 0,
+        }}
+        title="Logout"
+        onPress={logout}
+      />
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 40,
+  imageBox: {
+    width: Dimensions.get('window').width * 0.8,
+    height: Dimensions.get('window').height * 0.3,
+    overflow: 'hidden',
   },
 });
 
