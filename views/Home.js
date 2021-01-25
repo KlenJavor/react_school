@@ -25,9 +25,6 @@ const Home = ({navigation}) => {
         />
         <Menu style={styles.menu} />
         <Settings style={styles.settings} />
-        <Text style={styles.text}>
-          These are some unsorted photos uploaded by students
-        </Text>
       </View>
       <View style={styles.boxes}>
         <FirstListItem navigation={navigation}></FirstListItem>
