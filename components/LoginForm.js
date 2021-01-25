@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useLogin} from '../hooks/ApiHooks';
 import FormTextInput from './FormTextInput';
 import useLoginForm from '../hooks/LoginHooks';
+import {setStatusBarNetworkActivityIndicatorVisible} from 'expo-status-bar';
 
 const LoginForm = ({navigation}) => {
   const [loading, setLoading] = useState(false);
@@ -18,6 +19,7 @@ const LoginForm = ({navigation}) => {
     setLoading(true);
     try {
       const userData = await postLogin(inputs);
+      setUser(userData.user);
       setIsLoggedIn(true);
       await AsyncStorage.setItem('userToken', userData.token);
       setLoading(false);

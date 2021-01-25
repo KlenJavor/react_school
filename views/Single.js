@@ -1,39 +1,37 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  Image,
-  View,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, ActivityIndicator} from 'react-native';
 import PropTypes from 'prop-types';
 import {uploadsUrl} from '../utils/variables';
-import {StatusBar} from 'expo-status-bar';
-
-import {Card, ListItem, Button, Icon} from 'react-native-elements';
+import {Avatar, Card, ListItem, Text} from 'react-native-elements';
+import moment from 'moment';
 
 const Single = ({route}) => {
   const {singleMedia} = route.params;
-  // console.log('route filename', singleMedia.filename);
   return (
     <Card>
+      <Card.Title h4>{singleMedia.title}</Card.Title>
+      <Card.Title>{moment(singleMedia.time_added).format('LLL')}</Card.Title>
       <Card.Divider />
       <Card.Image
-        style={styles.imageBox}
         source={{uri: uploadsUrl + singleMedia.filename}}
-      ></Card.Image>
-      <Card.Title>{singleMedia.title}</Card.Title>
-      <Text>{singleMedia.description}</Text>
+        style={styles.image}
+        PlaceholderContent={<ActivityIndicator />}
+      />
+      <Card.Divider />
+      <Text style={{marginBottom: 10}}>{singleMedia.description}</Text>
+      <ListItem>
+        <Avatar source={{uri: 'http://placekitten.com/180'}} />
+        <Text>Ownername</Text>
+      </ListItem>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  imageBox: {
-    width: Dimensions.get('window').width * 0.8,
-    height: Dimensions.get('window').height * 0.6,
-    overflow: 'hidden',
+  image: {
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1,
   },
 });
 

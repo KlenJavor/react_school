@@ -1,20 +1,13 @@
 import React, {useContext} from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  Image,
-  View,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, ActivityIndicator} from 'react-native';
 import {MainContext} from '../contexts/MainContext';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Card, ListItem, Button, Icon} from 'react-native-elements';
+import {Card, Text, Button, ListItem, Avatar} from 'react-native-elements';
 
 const Profile = ({navigation}) => {
   const {isLoggedIn, setIsLoggedIn, user} = useContext(MainContext);
-  console.log('profile is logged in', isLoggedIn);
+  console.log('profile isLoggedIn?', isLoggedIn);
   console.log('profile user data', user);
   const logout = async () => {
     setIsLoggedIn(false);
@@ -26,34 +19,29 @@ const Profile = ({navigation}) => {
   };
   return (
     <Card>
-      <Card.Divider />
+      <Card.Title>
+        <Text h1>{user.username}</Text>
+      </Card.Title>
       <Card.Image
-        style={styles.imageBox}
-        source={require('../img/img4.png')}
-      ></Card.Image>
-      <Card.Title>Name: {user.username}</Card.Title>
-      <Card.Title>E-mail: {user.email}</Card.Title>
-      <Button
-        icon={<Icon name="code" color="#ffffff" />}
-        buttonStyle={{
-          borderRadius: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginBottom: 0,
-        }}
-        title="Logout"
-        onPress={logout}
+        source={{uri: 'http://placekitten.com/400'}}
+        style={styles.image}
+        PlaceholderContent={<ActivityIndicator />}
       />
+      <ListItem>
+        <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
+        <Text>{user.full_name}</Text>
+      </ListItem>
+      <ListItem>
+        <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
+        <Text>{user.email}</Text>
+      </ListItem>
+      <Button title={'Logout'} onPress={logout} />
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  imageBox: {
-    width: Dimensions.get('window').width * 0.8,
-    height: Dimensions.get('window').height * 0.3,
-    overflow: 'hidden',
-  },
+  image: {width: '100%', height: undefined, aspectRatio: 1},
 });
 
 Profile.propTypes = {
