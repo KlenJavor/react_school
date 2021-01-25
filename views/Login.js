@@ -36,6 +36,13 @@ const Login = ({navigation}) => {
       style={styles.container}
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
     >
+      <Text>{formToggle ? 'No Account?' : 'Already registered?'}</Text>
+      <Button
+        title={formToggle ? 'Register' : 'Login'}
+        onPress={() => {
+          setFormToggle(!formToggle);
+        }}
+      />
       {formToggle ? (
         <Card>
           <Card.Title h4>Login</Card.Title>
@@ -49,13 +56,6 @@ const Login = ({navigation}) => {
           <RegisterForm navigation={navigation} />
         </Card>
       )}
-      <Button
-        containerStyle={styles.toggleBtn}
-        title="Toggle"
-        onPress={() => {
-          setFormToggle(!formToggle);
-        }}
-      />
     </KeyboardAvoidingView>
   );
 };
