@@ -11,6 +11,7 @@ import List from '../components/List';
 import PropTypes from 'prop-types';
 import {Menu} from 'react-native-feather';
 import {Settings} from 'react-native-feather';
+import FirstListItem from '../components/FirstListItem';
 
 const Home = ({navigation}) => {
   return (
@@ -28,7 +29,10 @@ const Home = ({navigation}) => {
           These are some unsorted photos uploaded by students
         </Text>
       </View>
-      <List navigation={navigation}></List>
+      <View style={styles.boxes}>
+        <FirstListItem navigation={navigation}></FirstListItem>
+        <List navigation={navigation}></List>
+      </View>
     </SafeAreaView>
   );
 };
@@ -71,6 +75,10 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: 'rgba(52, 52, 52, 0.2)',
     padding: 10,
+  },
+  boxes: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
 

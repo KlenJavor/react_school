@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     elevation: 2,
-    height: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').width * 0.7,
     overflow: 'hidden',
   },
   titleText: {
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
 
   imageBox: {
-    width: Dimensions.get('window').width * 0.3,
-    height: Dimensions.get('window').width * 0.3,
+    width: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').width * 0.5,
     overflow: 'hidden',
     borderColor: 'black',
     borderWidth: 1,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-  textBox: {width: Dimensions.get('window').width * 0.3},
+  textBox: {width: Dimensions.get('window').width * 0.5},
 });
 
 ListItem.propTypes = {

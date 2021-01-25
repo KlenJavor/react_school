@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {uploadsUrl} from '../utils/variables';
+import {LinearGradient} from 'react-native-svg';
 
 const FirstListItem = (/*{singleMedia, navigation}*/) => {
   return (
@@ -20,13 +21,9 @@ const FirstListItem = (/*{singleMedia, navigation}*/) => {
         style={styles.row}
       >
         <View style={styles.imageBox}>
-          <Image
-            style={styles.image}
-            /*source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}*/
-          />
-        </View>
-        <View style={styles.textBox}>
-          <Text style={styles.titleText}>Upload</Text>
+          <LinearGradient
+            colors={['rgb(236, 150, 17)', 'rgb(180, 37, 56)']}
+          ></LinearGradient>
         </View>
       </TouchableOpacity>
     </View>
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     elevation: 2,
-    height: Dimensions.get('window').width * 0.5,
+    height: Dimensions.get('window').width * 0.7,
     overflow: 'hidden',
   },
   titleText: {
@@ -52,23 +49,16 @@ const styles = StyleSheet.create({
   },
 
   imageBox: {
-    width: Dimensions.get('window').width * 0.3,
-    height: Dimensions.get('window').width * 0.3,
+    width: Dimensions.get('window').width * 0.15,
+    height: Dimensions.get('window').width * 0.65,
     overflow: 'hidden',
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 5,
-  },
-
-  textBox: {width: Dimensions.get('window').width * 0.3},
 });
 
-ListItem.propTypes = {
+FirstListItem.propTypes = {
   singleMedia: PropTypes.object,
   navigation: PropTypes.object,
 };
