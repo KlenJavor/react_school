@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: undefined,
-    aspectRatio: 1,
+    aspectRatio: 1.5,
   },
   description: {
     marginBottom: 10,
