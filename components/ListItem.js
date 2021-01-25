@@ -1,35 +1,30 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Dimensions} from 'react-native';
 import PropTypes from 'prop-types';
 import {uploadsUrl} from '../utils/variables';
+import {Avatar, ListItem as RNEListItem} from 'react-native-elements';
+import {Image, Text, Button} from 'react-native-elements';
 
 const ListItem = ({singleMedia, navigation}) => {
   return (
-    <View style={styles.gridItem}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Single', {singleMedia});
-        }}
-        style={styles.row}
-      >
-        <View style={styles.imageBox}>
-          <Image
-            style={styles.image}
-            source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}
-          />
-        </View>
-        <View style={styles.textBox}>
-          <Text style={styles.titleText}>{singleMedia.title}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <RNEListItem
+      onPress={() => {
+        navigation.navigate('Single', {singleMedia});
+      }}
+      style={styles.row}
+    >
+      <View style={styles.imageBox}>
+        <Avatar
+          style={styles.image}
+          source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}
+        />
+      </View>
+
+      <RNEListItem.Subtitle style={styles.titleText}>
+        {singleMedia.title}
+      </RNEListItem.Subtitle>
+      <RNEListItem.Chevron></RNEListItem.Chevron>
+    </RNEListItem>
   );
 };
 
@@ -50,7 +45,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'chocolate',
   },
-
   imageBox: {
     width: Dimensions.get('window').width * 0.5,
     height: Dimensions.get('window').width * 0.5,
@@ -64,8 +58,6 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 5,
   },
-
-  textBox: {width: Dimensions.get('window').width * 0.5},
 });
 
 ListItem.propTypes = {

@@ -1,5 +1,11 @@
 import React, {useContext, useEffect} from 'react';
-import {StyleSheet, View, KeyboardAvoidingView} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,7 +15,7 @@ import RegisterForm from '../components/RegisterForm';
 
 const Login = ({navigation}) => {
   const {isLoggedIn, setIsLoggedIn, setUser} = useContext(MainContext);
-  //console.log('isLoggedIn?', isLoggedIn);
+  console.log('isLoggedIn?', isLoggedIn);
   const {checkToken} = useUser();
 
   const getToken = async () => {
@@ -31,23 +37,27 @@ const Login = ({navigation}) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}
-      >
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+    >
+      <View style={styles.form}>
+        <Text>Login</Text>
         <LoginForm navigation={navigation} />
+        <Text>Register</Text>
         <RegisterForm navigation={navigation} />
-      </KeyboardAvoidingView>
-    </View>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    padding: 16,
+  },
+  form: {
+    flex: 1,
     justifyContent: 'center',
   },
 });
