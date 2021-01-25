@@ -32,8 +32,13 @@ const Login = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <LoginForm navigation={navigation} />
-      <RegisterForm navigation={navigation} />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}
+      >
+        <LoginForm navigation={navigation} />
+        <RegisterForm navigation={navigation} />
+      </KeyboardAvoidingView>
     </View>
   );
 };
