@@ -28,12 +28,12 @@ const Profile = ({navigation}) => {
         PlaceholderContent={<ActivityIndicator />}
       />
       <ListItem>
-        <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
-        <Text>{user.full_name}</Text>
+        <Avatar icon={{name: 'email', color: 'black'}} />
+        <Text>{user.email}</Text>
       </ListItem>
       <ListItem>
         <Avatar icon={{name: 'user', type: 'font-awesome', color: 'black'}} />
-        <Text>{user.email}</Text>
+        <Text>{user.full_name}</Text>
       </ListItem>
       <Button title={'Logout'} onPress={logout} />
     </Card>

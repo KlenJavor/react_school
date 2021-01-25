@@ -6,19 +6,19 @@ import {Avatar, Card, ListItem, Text} from 'react-native-elements';
 import moment from 'moment';
 
 const Single = ({route}) => {
-  const {singleMedia} = route.params;
+  const {file} = route.params;
   return (
     <Card>
-      <Card.Title h4>{singleMedia.title}</Card.Title>
-      <Card.Title>{moment(singleMedia.time_added).format('LLL')}</Card.Title>
+      <Card.Title h4>{file.title}</Card.Title>
+      <Card.Title>{moment(file.time_added).format('LLL')}</Card.Title>
       <Card.Divider />
       <Card.Image
-        source={{uri: uploadsUrl + singleMedia.filename}}
+        source={{uri: uploadsUrl + file.filename}}
         style={styles.image}
         PlaceholderContent={<ActivityIndicator />}
       />
       <Card.Divider />
-      <Text style={{marginBottom: 10}}>{singleMedia.description}</Text>
+      <Text style={styles.description}>{file.description}</Text>
       <ListItem>
         <Avatar source={{uri: 'http://placekitten.com/180'}} />
         <Text>Ownername</Text>
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: undefined,
     aspectRatio: 1,
+  },
+  description: {
+    marginBottom: 10,
   },
 });
 
