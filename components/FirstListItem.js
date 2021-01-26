@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import {uploadsUrl} from '../utils/variables';
 import {LinearGradient} from 'react-native-svg';
+import {Plus} from 'react-native-feather';
 
 const FirstListItem = (/*{singleMedia, navigation}*/) => {
   return (
@@ -24,6 +25,7 @@ const FirstListItem = (/*{singleMedia, navigation}*/) => {
           <LinearGradient
             colors={['rgb(236, 150, 17)', 'rgb(180, 37, 56)']}
           ></LinearGradient>
+          <Plus style={styles.menu} />
         </View>
       </TouchableOpacity>
     </View>
@@ -55,6 +57,14 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
+  },
+  menu: {
+    position: 'absolute',
+    top: Dimensions.get('window').width * 0.27,
+    left: 20,
+    color: 'black',
+    width: 32,
+    height: 32,
   },
 });
 

@@ -19,15 +19,12 @@ const Home = ({navigation}) => {
       <StatusBar style={styles.statbar} />
       <View>
         <ImageBackground
-          source={require('../img/img2.png')}
+          source={require('../img/img4.png')}
           style={styles.bgImage}
           imageStyle={{borderBottomRightRadius: 55}}
         />
         <Menu style={styles.menu} />
         <Settings style={styles.settings} />
-        <Text style={styles.text}>
-          These are some unsorted photos uploaded by students
-        </Text>
       </View>
       <View style={styles.boxes}>
         <FirstListItem navigation={navigation}></FirstListItem>
