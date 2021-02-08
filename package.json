@@ -37,7 +37,8 @@
     "react-native-web": "~0.13.12",
     "typeface-roboto": "^1.1.13",
     "validate.js": "^0.13.1",
-    "expo-av": "~8.7.0"
+    "expo-av": "~8.7.0",
+    "expo-screen-orientation": "~2.1.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
