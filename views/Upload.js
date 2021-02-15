@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useMedia, useTag} from '../hooks/ApiHooks';
 import {MainContext} from '../contexts/MainContext';
 import {appIdentifier} from '../utils/variables';
-import {Video} from 'expo-av';
+import {Audio, Video} from 'expo-av';
 
 const Upload = ({navigation}) => {
   const [image, setImage] = useState(null);
@@ -93,15 +93,25 @@ const Upload = ({navigation}) => {
   const pickImage = async (library) => {
     let result = null;
     const options = {
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.5,
     };
-    if (library) {
-      result = await ImagePicker.launchImageLibraryAsync(options);
+    if (library === 'library') {
+      const source = {...options, mediaTypes: ImagePicker.MediaTypeOptions.All};
+      result = await ImagePicker.launchImageLibraryAsync(source);
+    } else if (library === 'photo') {
+      const source = {
+        ...options,
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      };
+      result = await ImagePicker.launchCameraAsync(source);
     } else {
-      result = await ImagePicker.launchCameraAsync(options);
+      const source = {
+        ...options,
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+      };
+      result = await ImagePicker.launchCameraAsync(source);
     }
 
     console.log(result);
@@ -150,9 +160,14 @@ const Upload = ({navigation}) => {
             onChangeText={(txt) => handleInputChange('description', txt)}
             errorMessage={uploadErrors.description}
           />
-          <Button title="Choose from library" onPress={() => pickImage(true)} />
-          <Button title="Use camera" onPress={() => pickImage(false)} />
+          <Button
+            title="Choose from library"
+            onPress={() => pickImage('library')}
+          />
+          <Button title="Take photo" onPress={() => pickImage('photo')} />
+          <Button title="Take video" onPress={() => pickImage('video')} />
           {isUploading && <ActivityIndicator size="large" color="#0000ff" />}
+
           <Button
             title="Upload file"
             onPress={doUpload}
