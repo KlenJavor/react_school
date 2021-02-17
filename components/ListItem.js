@@ -37,6 +37,7 @@ const ListItem = ({navigation, singleMedia, isMyFile}) => {
     );
   };
 
+  console.log(singleMedia);
   return (
     <RNEListItem
       bottomDivider
@@ -47,8 +48,15 @@ const ListItem = ({navigation, singleMedia, isMyFile}) => {
       <Avatar
         size="large"
         square
-        source={{uri: uploadsUrl + singleMedia.thumbnails.w160}}
+        source={
+          singleMedia.thumbnails
+            ? {
+                uri: uploadsUrl + singleMedia.thumbnails.w160,
+              }
+            : require('../assets/bg.png')
+        }
       ></Avatar>
+
       <RNEListItem.Content>
         <RNEListItem.Title h4>{singleMedia.title}</RNEListItem.Title>
         <RNEListItem.Subtitle>{singleMedia.description}</RNEListItem.Subtitle>
