@@ -27,7 +27,6 @@ const ListItem = ({navigation, singleMedia, isMyFile}) => {
               await deleteFile(singleMedia.file_id, userToken);
               setUpdate(update + 1);
             } catch (error) {
-              // notify user here?
               console.error(error);
             }
           },
@@ -53,7 +52,7 @@ const ListItem = ({navigation, singleMedia, isMyFile}) => {
             ? {
                 uri: uploadsUrl + singleMedia.thumbnails.w160,
               }
-            : require('../assets/bg.png')
+            : require('../assets/play.jpg')
         }
       ></Avatar>
 

@@ -95,7 +95,11 @@ const Single = ({route}) => {
         <Card.Divider />
         {file.media_type === 'image' ? (
           <Card.Image
-            source={{uri: uploadsUrl + file.filename}}
+            source={
+              uploadsUrl
+                ? {uri: uploadsUrl + file.filename}
+                : require('../assets/play.jpg')
+            }
             style={styles.image}
             PlaceholderContent={<ActivityIndicator />}
           />
